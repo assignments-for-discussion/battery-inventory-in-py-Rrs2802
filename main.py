@@ -5,6 +5,7 @@ def count_batteries_by_health(present_capacities):
         "exchange": 0,
         "failed": 0
     }
+
     # Loop through each battery's present capacity
     for capacity in present_capacities:
         # Calculate State-of-Health (SoH) percentage for the current battery
@@ -33,6 +34,7 @@ def test_count_batteries_by_health():
     # Print the counts for better visibility
     print("Counts:", counts)
     print("Done counting :)\n")
+
 def test_count_batteries_by_health_with_boundaries():
     print("Testing count_batteries_by_health function with boundary conditions...\n")
     # Test case with all batteries having the lowest SoH
@@ -60,49 +62,42 @@ def test_count_batteries_by_health_with_random_distribution():
     assert counts_random["healthy"] == 3
     assert counts_random["exchange"] == 2
     assert counts_random["failed"] == 2
-
     # Print the counts for better visibility
     print("Counts - Random Distribution:", counts_random)
     print("Done counting with random distribution :)\n")
 
 def test_count_batteries_by_health_with_large_list():
     print("Testing count_batteries_by_health function with a large list...\n")
-
     # Test case with a larger list of batteries
     present_capacities_large_list = [85] * 1000
     counts_large_list = count_batteries_by_health(present_capacities_large_list)
     assert counts_large_list["healthy"] == 1000
     assert counts_large_list["exchange"] == 0
     assert counts_large_list["failed"] == 0
-
     # Print the counts for better visibility
     print("Counts - Large List:", counts_large_list)
     print("Done counting with a large list :)\n")
 
 def test_count_batteries_by_health_with_single_battery():
     print("Testing count_batteries_by_health function with a single battery...\n")
-
     # Test case with a single battery
     present_capacities_single_battery = [90]
     counts_single_battery = count_batteries_by_health(present_capacities_single_battery)
     assert counts_single_battery["healthy"] == 1
     assert counts_single_battery["exchange"] == 0
     assert counts_single_battery["failed"] == 0
-
     # Print the counts for better visibility
     print("Counts - Single Battery:", counts_single_battery)
     print("Done counting with a single battery :)\n")
 
 def test_count_batteries_by_health_with_equal_distribution():
     print("Testing count_batteries_by_health function with an equal distribution of SoH...\n")
-
     # Test case with batteries having an equal distribution of SoH
     present_capacities_equal_distribution = [80, 85, 90, 75, 95, 70]
     counts_equal_distribution = count_batteries_by_health(present_capacities_equal_distribution)
     assert counts_equal_distribution["healthy"] == 2
     assert counts_equal_distribution["exchange"] == 2
     assert counts_equal_distribution["failed"] == 2
-
     # Print the counts for better visibility
     print("Counts - Equal Distribution:", counts_equal_distribution)
     print("Done counting with an equal distribution of SoH :)\n")
